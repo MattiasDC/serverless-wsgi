@@ -113,12 +113,6 @@ describe("serverless-wsgi", () => {
             "/tmp/wsgi_handler.py"
           )
         ).to.be.true;
-        expect(
-          copyStub.calledWith(
-            path.resolve(__dirname, "serverless_wsgi.py"),
-            "/tmp/serverless_wsgi.py"
-          )
-        ).to.be.true;
         expect(writeStub.calledWith("/tmp/.serverless-wsgi")).to.be.true;
         expect(JSON.parse(writeStub.lastCall.args[1])).to.deep.equal({
           app: "api.app"
@@ -133,7 +127,6 @@ describe("serverless-wsgi", () => {
         sandbox.restore();
         expect(plugin.serverless.service.package.include).to.have.members([
           "wsgi_handler.py",
-          "serverless_wsgi.py",
           ".serverless-wsgi"
         ]);
         expect(plugin.serverless.service.package.exclude).to.have.members([
@@ -233,7 +226,6 @@ describe("serverless-wsgi", () => {
       var removeStub = sandbox.stub(fse, "removeAsync");
       plugin.hooks["after:package:createDeploymentArtifacts"]().then(() => {
         expect(removeStub.calledWith("/tmp/wsgi_handler.py")).to.be.true;
-        expect(removeStub.calledWith("/tmp/serverless_wsgi.py")).to.be.true;
         expect(removeStub.calledWith("/tmp/.serverless-wsgi")).to.be.true;
         expect(removeStub.calledWith("/tmp/.requirements")).to.be.false;
         sandbox.restore();
@@ -2271,7 +2263,6 @@ describe("serverless-wsgi", () => {
       var removeStub = sandbox.stub(fse, "removeAsync");
       plugin.hooks["after:invoke:local:invoke"]().then(() => {
         expect(removeStub.calledWith("/tmp/wsgi_handler.py")).to.be.true;
-        expect(removeStub.calledWith("/tmp/serverless_wsgi.py")).to.be.true;
         expect(removeStub.calledWith("/tmp/.serverless-wsgi")).to.be.true;
         sandbox.restore();
       });

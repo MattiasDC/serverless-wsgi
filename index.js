@@ -94,7 +94,7 @@ class ServerlessWSGI {
       this.serverless.service.package.include = _.union(
         this.serverless.service.package.include,
         _.map(
-          ["wsgi_handler.py", "serverless_wsgi.py", ".serverless-wsgi"],
+          ["wsgi_handler.py", ".serverless-wsgi"],
           artifact =>
             path.join(
               path.relative(
@@ -189,10 +189,6 @@ class ServerlessWSGI {
       fse.copyAsync(
         path.resolve(__dirname, "wsgi_handler.py"),
         path.join(this.packageRootPath, "wsgi_handler.py")
-      ),
-      fse.copyAsync(
-        path.resolve(__dirname, "serverless_wsgi.py"),
-        path.join(this.packageRootPath, "serverless_wsgi.py")
       ),
       fse.writeFileAsync(
         path.join(this.packageRootPath, ".serverless-wsgi"),
@@ -345,7 +341,6 @@ class ServerlessWSGI {
   cleanup() {
     const artifacts = [
       "wsgi_handler.py",
-      "serverless_wsgi.py",
       ".serverless-wsgi"
     ];
 
