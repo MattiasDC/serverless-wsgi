@@ -29,7 +29,7 @@
     "requirements.py",
     "requirements.txt",
     "serve.py",
-    "wsgi_handler.py",
+    "wsgi_handler.py"
   ],
   "main": "index.js",
   "bin": {},
