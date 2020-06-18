@@ -18,12 +18,6 @@
     "serverless framework plugin",
     "serverless applications",
     "serverless plugins",
-    "api gateway",
-    "lambda",
-    "aws",
-    "aws lambda",
-    "amazon",
-    "amazon web services",
     "serverless.com"
   ],
   "files": [
@@ -36,7 +30,6 @@
     "requirements.txt",
     "serve.py",
     "wsgi_handler.py",
-    "serverless_wsgi.py"
   ],
   "main": "index.js",
   "bin": {},
