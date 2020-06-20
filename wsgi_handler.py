@@ -24,9 +24,6 @@ except ImportError:
 root = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, root)
 
-import serverless_wsgi
-
-
 def load_config():
     """ Read the configuration file created during deployment
     """
